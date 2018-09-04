@@ -38,11 +38,18 @@ var Test = function (_React$Component) {
   return Test;
 }(React.Component);
 
-for (var num = 1; num <= 100; num++) {
-  var output = "";
-  if (num % 3 == 0) output += "Fizz";
-  if (num % 5 == 0) output += "Buzz";
-  console.log(output || num);
+var size = 50;
+var output = "";
+for (var i = 0; i < size; i++) {
+  for (var j = 0; j < size; j++) {
+    if ((j + i) % 2 == 0) {
+      output += " ";
+    } else {
+      output += "#";
+    }
+  }
+  output += "\n";
 }
+console.log(output);
 
 ReactDOM.render(React.createElement(Test, null), document.getElementById('app'));
