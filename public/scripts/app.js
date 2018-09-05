@@ -8,6 +8,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//require('./src/scripts.js');
 var Test = function (_React$Component) {
   _inherits(Test, _React$Component);
 
@@ -38,18 +39,11 @@ var Test = function (_React$Component) {
   return Test;
 }(React.Component);
 
-var size = 50;
-var output = "";
-for (var i = 0; i < size; i++) {
-  for (var j = 0; j < size; j++) {
-    if ((j + i) % 2 == 0) {
-      output += " ";
-    } else {
-      output += "#";
-    }
-  }
-  output += "\n";
-}
-console.log(output);
+var rtlScripts = SCRIPTS.filter(function (s) {
+  return s.direction == "ttb";
+});
+console.log(rtlScripts.map(function (s) {
+  return s.name;
+}));
 
 ReactDOM.render(React.createElement(Test, null), document.getElementById('app'));

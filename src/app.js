@@ -1,3 +1,4 @@
+//require('./src/scripts.js');
 class Test extends React.Component {
   constructor(props) {
     super(props);
@@ -13,18 +14,7 @@ class Test extends React.Component {
   }
 }
 
-let size = 50;
-let output = "";
-for (let i = 0; i < size; i++) {
-  for (let j = 0; j < size; j++) {
-    if ( (j + i) % 2 == 0) {
-      output += " ";
-    } else {
-      output += "#";
-    }
-  }
-  output += "\n";
-}
-console.log(output);
+let rtlScripts = SCRIPTS.filter(s => s.direction == "ttb");
+console.log(rtlScripts.map(s => s.name));
 
 ReactDOM.render(<Test />, document.getElementById('app'));
