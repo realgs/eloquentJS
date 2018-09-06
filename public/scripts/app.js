@@ -135,7 +135,49 @@ function countBy(items, groupName) {
 
   return counts;
 }
+function every(array, test) {
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
 
-console.log(dominantDirection('Hey, مساء الخير'));
+  try {
+    for (var _iterator3 = array[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var elem = _step3.value;
 
+      if (!test(elem)) return false;
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  return true;
+}
+function everyUsingSome(array, test) {
+  return array.some(function (arg) {
+    return !test(arg);
+  }) ? false : true;
+}
+console.log(everyUsingSome([1, 3, 5], function (n) {
+  return n < 10;
+}));
+// → true
+console.log(everyUsingSome([2, 4, 16], function (n) {
+  return n < 10;
+}));
+// → false
+console.log(everyUsingSome([], function (n) {
+  return n < 10;
+}));
+// → true
 ReactDOM.render(React.createElement(Test, null), document.getElementById('app'));

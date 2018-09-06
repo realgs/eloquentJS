@@ -46,7 +46,19 @@ function countBy(items, groupName) {
   }
   return counts;
 }
-
-console.log(dominantDirection('Hey, مساء الخير'));
-
+function every(array, test) {
+  for (let elem of array) {
+    if(!test(elem)) return false;
+  }
+  return true;
+}
+function everyUsingSome(array, test) {
+  return array.some((arg) => !test(arg)) ? false : true;
+}
+console.log(everyUsingSome([1, 3, 5], n => n < 10));
+// → true
+console.log(everyUsingSome([2, 4, 16], n => n < 10));
+// → false
+console.log(everyUsingSome([], n => n < 10));
+// → true
 ReactDOM.render(<Test />, document.getElementById('app'));
