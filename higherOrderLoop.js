@@ -16,3 +16,4 @@ function body(value) {
   console.log(value);
 }
 loop(1, test, update, body);
+loop(1, x => x <= 10, x => x + 1, console.log);

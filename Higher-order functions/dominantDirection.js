@@ -1,27 +1,12 @@
-//require('./src/scripts.js');
-class Test extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-  render() {
-    return (
-      <div>
-        <p>Dominant text direction of 'Hey, مساء الخير' is: {dominantDirection('Hey, مساء الخير')}</p>
-      </div>
-    );
-  }
-}
 function dominantDirection(text) {
   let counted = countBy(text, char => {
     let script = characterScript(char.codePointAt(0));
     return script ? script.direction : "none";
-  }).filter(({description}) => description != "none");
+  }).filter(({ description }) => description != "none");
 
   if (counted.length == 0) return 'ltr';
 
-  return counted.reduce((a, b) => {return a.count > b.count ? a : b}).name;
+  return counted.reduce((a, b) => { return a.count > b.count ? a : b }).name;
 }
 function characterScript(code) {
   for (let script of SCRIPTS) {
@@ -48,5 +33,3 @@ function countBy(items, groupName) {
 }
 
 console.log(dominantDirection('Hey, مساء الخير'));
-
-ReactDOM.render(<Test />, document.getElementById('app'));
